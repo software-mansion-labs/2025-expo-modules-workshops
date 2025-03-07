@@ -1,0 +1,10 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "expo-modules-workshops": ["../src/index"],
+      "expo-modules-workshops/*": ["../src/*"]
+    }
+  }
+}
