@@ -1,5 +1,7 @@
 import ExpoModulesCore
 
 public class ExpoModulesWorkshopsModule: Module {
-  public func definition() -> ModuleDefinition {}
+  public func definition() -> ModuleDefinition {
+    Name("ExpoModulesWorkshops")
+  }
 }
