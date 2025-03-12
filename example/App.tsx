@@ -1,13 +1,13 @@
-import { Text, View, StyleSheet } from "react-native";
-// import ExpoModulesWorkshops from 'expo-modules-workshops';
+import { ExpoMapView } from "expo-modules-workshops";
+import { View, StyleSheet, Button } from 'react-native';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>
-        Hello
-        <Text style={styles.results}>👋</Text>
-      </Text>
+      <ExpoMapView style={styles.box} />
+      <View style={styles.buttonBar}>
+        <Button title="Press me" onPress={() => {}} />
+      </View>
     </View>
   );
 }
@@ -15,17 +15,18 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    padding: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingBottom: 30,
   },
-  text: {
-    fontSize: 20,
-    marginTop: 20,
-    fontWeight: "bold",
+  box: {
+    width: '100%',
+    flex: 1,
   },
-  results: {
-    fontFamily: "Courier",
-    fontWeight: "normal",
-    paddingLeft: 10,
+  buttonBar: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingTop: 20,
   },
 });

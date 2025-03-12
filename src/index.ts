@@ -2,3 +2,5 @@
 // and on native platforms to ExpoModulesWorkshopsModule.ts
 export { default } from './ExpoModulesWorkshopsModule';
 export * from './ExpoModulesWorkshopsModule';
+export * from './ExpoMapView';
+export * from './useScreenOrientation';
