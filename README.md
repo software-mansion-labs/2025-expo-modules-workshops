@@ -9,7 +9,7 @@ npm
 cd ios && pod install
 cd ..
 npm start
-yarn open:ios
-yarn open:android
+yarn ios
+yarn android
 ```
 Build iOS and Android project
