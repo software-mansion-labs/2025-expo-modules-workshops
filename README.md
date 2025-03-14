@@ -5,7 +5,7 @@
 ```
 npm i
 cd example
-npm
+npm i
 cd ios && pod install
 cd ..
 npm start
