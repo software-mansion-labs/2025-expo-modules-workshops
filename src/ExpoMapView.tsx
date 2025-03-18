@@ -8,17 +8,22 @@ export interface ExpoMapViewRef {
     longitude: number,
     animated: boolean,
   ) => Promise<void>;
+  addMarker: (
+    latitude: number,
+    longitude: number,
+  ) => Promise<void>;
 }
 
 export type ExpoMapViewProps = {
   mapType?: "standard" | "satellite";
-  onMapPress?: (event: { nativeEvent: { x: number; y: number } }) => void;
+  onMapPress?: (event: { nativeEvent: { latitude: number; longitude: number } }) => void;
   onRegionChange?: (event: {
     nativeEvent: { latitude: number; longitude: number };
   }) => void;
   style?: StyleProp<ViewStyle>;
   ref?: React.Ref<ExpoMapViewRef>;
   nativeRef?: React.Ref<ExpoMapViewRef>;
+  cameraCenter: { latitude: number; longitude: number };
 };
 
 const NativeView: React.ComponentType<ExpoMapViewProps> = requireNativeView(

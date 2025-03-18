@@ -10,7 +10,6 @@ import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
 import expo.modules.kotlin.records.Field
 import expo.modules.kotlin.records.Record
-import expo.modules.settings.ExpoMapView
 import org.maplibre.android.MapLibre
 import org.maplibre.android.geometry.LatLng
 
@@ -72,6 +71,11 @@ class ExpoModulesWorkshopsModule : Module() {
       }
     }
 
+    data class Coordinates(
+      @Field var latitude: Double = .0,
+      @Field var longitude: Double = .0,
+    ) : Record
+
     View(ExpoMapView::class) {
       Handler(Looper.getMainLooper()).post {
         appContext.reactContext?.let { MapLibre.getInstance(it.applicationContext) }
@@ -85,6 +89,14 @@ class ExpoModulesWorkshopsModule : Module() {
 
       AsyncFunction("moveTo") { view: ExpoMapView, lat: Double, lon: Double, animated: Boolean ->
         view.moveTo(LatLng(lat, lon), animated)
+      }
+
+      Prop("cameraCenter") { view: ExpoMapView, position: Coordinates ->
+        view.setCameraCenter(position.latitude, position.longitude)
+      }
+
+      AsyncFunction("addMarker") { view: ExpoMapView, latitude: Double, longitude: Double ->
+        view.addMarker(latitude, longitude)
       }
     }
 

@@ -9,6 +9,10 @@ export default function App() {
     mapRef.current?.moveTo(50.04, 19.96, true);
   };
 
+  const addMarker = (position: { latitude: number; longitude: number }) => {
+    mapRef.current?.addMarker(position.latitude, position.longitude);
+  };
+
   return (
     <View style={styles.container}>
       <ExpoMapView
@@ -16,8 +20,9 @@ export default function App() {
         style={styles.box}
         mapType="standard"
         onMapPress={(event) => {
-          console.log("onMapPress", event.nativeEvent);
+          addMarker(event.nativeEvent);
         }}
+        cameraCenter={{ latitude: 50.04, longitude: 19.96 }}
       />
       <View style={styles.buttonBar}>
         <Button title="moveTo" onPress={handleMoveTo} />

@@ -5,6 +5,11 @@ internal struct CustomObject: Record {
   @Field var data: String = ""
 }
 
+internal struct Coordinates: Record {
+  @Field var latitude: Double = 0
+  @Field var longitude: Double = 0
+}
+
 public class ExpoModulesWorkshopsModule: Module {
   public func definition() -> ModuleDefinition {
     Name("ExpoModulesWorkshops")
@@ -63,11 +68,20 @@ public class ExpoModulesWorkshopsModule: Module {
           view.mapView.mapType = .standard
         }
       }
-      Events("onMapPress", "onRegionChange")
+      Events("onMapPress")
       
       AsyncFunction("moveTo") { (view: ExpoMapView, lat: Double, lon: Double, animated: Bool) in
         view.moveTo(latitude: lat, longitude: lon, animated: animated)
       }
+      
+      Prop("cameraCenter") { (view: ExpoMapView, position: Coordinates) in
+        view.setCameraCenter(latitude: position.latitude, longitude: position.longitude)
+      }
+      
+      AsyncFunction("addMarker") { (view: ExpoMapView, lat: Double, lon: Double) in
+        view.addMarker(latitude: lat, longitude: lon)
+      }
+      
     }
 
   }
